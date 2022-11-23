@@ -1,2 +1,2 @@
 # Training
-For skill up training
+Training for skill up
