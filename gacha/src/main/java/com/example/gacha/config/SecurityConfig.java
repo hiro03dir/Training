@@ -11,5 +11,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     @Override
     public void configure(HttpSecurity http) throws Exception {
         // TODO 処理の実装
+        http.csrf().ignoringAntMatchers("/sample");
     }
 }
