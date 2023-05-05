@@ -10,7 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        // TODO 処理の実装
+        // SpringSecurityのCSRFを"/sample"に対してのみ無効にする
         http.csrf().ignoringAntMatchers("/sample");
     }
 }
