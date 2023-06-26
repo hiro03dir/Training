@@ -1,6 +1,7 @@
 package com.example.gacha.dto;
 
 import com.example.gacha.model.User;
+import com.example.gacha.repository.Coin;
 import lombok.Data;
 
 /**
@@ -14,6 +15,6 @@ public class UserEntity {
     private int coin;
 
     public User toUser(){
-        return new User(name, coin);
+        return new User(id, name, new Coin(coin));
     }
 }
