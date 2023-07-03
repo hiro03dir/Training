@@ -1,5 +1,6 @@
 package com.example.gacha.model;
 
+import com.example.gacha.Exception.NotEnoughException;
 import com.example.gacha.repository.Coin;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,7 +19,7 @@ public class User {
         if(this.coin.canGacha(pay)) {
             this.coin = this.coin.sub(pay);
         }else {
-            // TODO:error
+            throw new NotEnoughException();
         }
     }
     public void buyCoin(int amt) {
