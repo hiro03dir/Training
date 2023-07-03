@@ -1,6 +1,7 @@
 package com.example.gacha.service;
 
 import com.example.gacha.model.Character;
+import com.example.gacha.model.Gacha;
 import com.example.gacha.model.GachaUseCase;
 import com.example.gacha.model.User;
 import com.example.gacha.repository.CharacterRepository;
@@ -26,7 +27,13 @@ public class GachaUseCaseImpl implements GachaUseCase {
         // Characterの取得
         List<Character> characters = this.characterRepository.getCharacters().stream().map(i ->new Character(i.getId(),i.getName(), i.getLank())).collect(Collectors.toList());
 
-        //TODO:ガチャのやりとり
-        return characters;
+        //ガチャの作成
+        Gacha gacha = new Gacha(characters);
+        user.useCoin(gacha.needCoins);
+        // ガチャの利用
+        List<Character> characterList = gacha.play();
+        // TODO ユーザー情報の更新
+
+        return characterList;
     }
 }
