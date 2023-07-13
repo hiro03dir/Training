@@ -43,6 +43,10 @@ dependencies {
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
+	// test
+	testImplementation 'com.github.springtestdbunit:spring-test-dbunit:1.3.0'
+	testImplementation 'org.dbunit:dbunit:2.7.3'
+	testImplementation 'com.h2database:h2:2.1.212'
 }
 
 tasks.named('test') {

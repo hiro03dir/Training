@@ -1,5 +1,6 @@
 package com.example.gacha.service;
 
+import com.example.gacha.dto.UserMapper;
 import com.example.gacha.model.Character;
 import com.example.gacha.model.Gacha;
 import com.example.gacha.model.GachaUseCase;
@@ -20,6 +21,9 @@ public class GachaUseCaseImpl implements GachaUseCase {
     @Autowired
     private CharacterRepository characterRepository;
 
+    @Autowired
+    private UserMapper userMapper;
+
     @Override
     public List<Character> getCharacters(){
         // Userの取得
@@ -32,7 +36,8 @@ public class GachaUseCaseImpl implements GachaUseCase {
         user.useCoin(gacha.needCoins);
         // ガチャの利用
         List<Character> characterList = gacha.play();
-        // TODO ユーザー情報の更新
+        // ユーザー情報の更新
+        this.userRepository.updateCoin(this.userMapper.toEntity(user));
 
         return characterList;
     }
