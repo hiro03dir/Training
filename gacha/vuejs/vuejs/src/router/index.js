@@ -3,6 +3,7 @@ import {createStore} from 'vuex'
 
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
+import Gacha from '../views/Gacha.vue'
 
 const routes = [
     {
@@ -14,6 +15,11 @@ const routes = [
         path:'/login',
         name: 'Login',
         component: Login
+    },
+    {
+        path:'/gacha',
+        name: 'Gacha',
+        component: Gacha
     }
 ]
 

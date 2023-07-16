@@ -1,7 +1,9 @@
 package com.example.gacha.dto;
 
 import com.example.gacha.model.User;
+import org.springframework.stereotype.Component;
 
+@Component
 public class UserMapperImpl implements UserMapper{
     @Override
     public UserEntity toEntity(User user) {
