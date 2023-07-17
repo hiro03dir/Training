@@ -4,6 +4,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.example.gacha.model.UserForm;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.slf4j.*;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 public class JsonAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     private AuthenticationManager authenticationManager;
+    private static final Logger log = LoggerFactory.getLogger(JsonAuthenticationFilter.class);
 
     public JsonAuthenticationFilter(AuthenticationManager authenticationManager){
 
@@ -28,6 +30,7 @@ public class JsonAuthenticationFilter extends UsernamePasswordAuthenticationFilt
 
         // ログインパスを設定
         setRequiresAuthenticationRequestMatcher(new AntPathRequestMatcher("/api/login","POST"));
+        log.debug("/api/loginのAPIが叩かれました。");
         // ログイン用パラメータの設定
         setUsernameParameter("username");
         setPasswordParameter("password");

@@ -4,7 +4,7 @@
     <!-- idには対応するメソッド名を記述します -->
     <!-- select処理なのでselectタグで囲います -->
     <select id="findByName" resultType="com.example.gacha.dto.UserEntity">
-        select * from users
+        select * from users where name = #{name}
     </select>
     <update id="updateCoin">
         update users set coin = #{coin} where name = #{name}

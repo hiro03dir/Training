@@ -4,3 +4,7 @@ spring:
     url: jdbc:postgresql://localhost:5432/gacha
     username: user
     password: password
+logging:
+  level:
+    root: INFO
+    com.example: DEBUG
