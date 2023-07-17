@@ -8,6 +8,7 @@ import com.example.gacha.model.User;
 import com.example.gacha.repository.CharacterRepository;
 import com.example.gacha.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -26,8 +27,10 @@ public class GachaUseCaseImpl implements GachaUseCase {
 
     @Override
     public List<Character> getCharacters(){
+        // UserNameを取得
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
         // Userの取得
-        User user = this.userRepository.findByName("zenn").toUser();
+        User user = this.userRepository.findByName(username).toUser();
         // Characterの取得
         List<Character> characters = this.characterRepository.getCharacters().stream().map(i ->new Character(i.getId(),i.getName(), i.getLank())).collect(Collectors.toList());
 

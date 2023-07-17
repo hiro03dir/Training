@@ -29,7 +29,7 @@ public class LoginFilter extends OncePerRequestFilter {
         // Tokenの認証・検証
         DecodedJWT decodedJWT = JWT.require(Algorithm.HMAC256("secret")).build().verify(token);
         // usernameの取得
-        String username = decodedJWT.getClaim("username").toString();
+        String username = decodedJWT.getClaim("username").asString();
         // ログイン状態を設定する
         SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(username,null,new ArrayList<>()));
         filterChain.doFilter(request,response);
