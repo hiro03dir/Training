@@ -17,7 +17,7 @@ resources/application.ymlで起動したコンテナに繋ぐ設定を行う。
 
 ### 初期データの挿入
 ```sql
-// userの挿入
+-- userの挿入
 CREATE TABLE "users" (
 	"id" SERIAL NOT NULL,
 	"name" TEXT NOT NULL primary key,
@@ -28,7 +28,7 @@ CREATE TABLE "users" (
 
 INSERT INTO "users" ("name", "password", "coin") VALUES ('zenn', 'zenn', '900');
 
-// キャラクターの挿入
+-- キャラクターの挿入
 CREATE TABLE "characters" (
 	"id" SERIAL NOT NULL primary key,
 	"name" TEXT NOT NULL,
@@ -41,6 +41,13 @@ INSERT INTO "characters" ("name", "lank") VALUES ('【自動書記】インデ�
 INSERT INTO "characters" ("name", "lank") VALUES ('【常盤台中学生】御坂美琴', 1);
 INSERT INTO "characters" ("name", "lank") VALUES ('【学生】佐天涙子', 1);
 INSERT INTO "characters" ("name", "lank") VALUES ('【座標移動】結標淡希', 2);
+
+-- Userのcharacterコレクションテーブルを追加
+CREATE TABLE "stocks" (
+	"id" SERIAL NOT NULL primary key,
+	"user_id" INTEGER NOT NULL,
+	"character_id" INTEGER NOT NULL
+);
 
 ```
 
