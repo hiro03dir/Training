@@ -1,11 +1,13 @@
 package com.example.gacha.service;
 
+import com.example.gacha.dto.StockEntity;
 import com.example.gacha.dto.UserMapper;
 import com.example.gacha.model.Character;
 import com.example.gacha.model.Gacha;
 import com.example.gacha.model.GachaUseCase;
 import com.example.gacha.model.User;
 import com.example.gacha.repository.CharacterRepository;
+import com.example.gacha.repository.StockRepository;
 import com.example.gacha.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -25,6 +27,9 @@ public class GachaUseCaseImpl implements GachaUseCase {
     @Autowired
     private UserMapper userMapper;
 
+    @Autowired
+    private StockRepository stockRepository;
+
     @Override
     public List<Character> getCharacters(){
         // UserNameを取得
@@ -41,6 +46,12 @@ public class GachaUseCaseImpl implements GachaUseCase {
         List<Character> characterList = gacha.play();
         // ユーザー情報の更新
         this.userRepository.updateCoin(this.userMapper.toEntity(user));
+
+        List<StockEntity> stockEntities = characterList.stream().map(i -> {
+            return new StockEntity(user.getId(), i.getId());
+        }).collect(Collectors.toList());
+
+        this.stockRepository.save(stockEntities);
 
         return characterList;
     }

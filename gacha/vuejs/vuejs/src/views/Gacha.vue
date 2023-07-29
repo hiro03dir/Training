@@ -44,6 +44,20 @@ export default {
                 console.log(e)
             })
         },
-    }
+    },
+    mounted() {
+        axios.get('http://localhost:8080/api/islogin', {
+            headers : {
+                "X-AUTH-TOKEN": "Bearer " + this.$store.getters.getToken
+            }
+        })
+        .then(res => {
+            console.log(res)
+        })
+        .catch( () => {
+            alert("ログインしてください")
+            this.$router.push("/login")
+        })
+    },
 }
 </script>
