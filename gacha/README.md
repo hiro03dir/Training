@@ -64,3 +64,12 @@ gradleのbootRunを実行
 - URLでweb画面を表示
   Vueのデフォルト画面： http://localhost:8081/
 　画面
+
+#### エラー関連
+- docker
+  - postgres
+    'The data directory was initialized by PostgreSQL version 15, which is not compatible with this version 16.0'
+    のようなエラーが出た場合、docker-compose.ymlではpostgresの最新版のイメージを使っているが、すでにビルドされているデータディレクトリが古いバージョンなので互換性がないというエラーになる。
+    対策としては、生成ファイルであるdataディレクトリを一度削除してビルドしなおすか、docker-compose.ymlでのpostgresのバージョンを下げれば良い。
+  - vuejs
+    dockerのビルドの時点でvuejsのコードの中身にまで口出してくるので注意
