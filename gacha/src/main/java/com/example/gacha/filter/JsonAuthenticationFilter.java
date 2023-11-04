@@ -58,7 +58,9 @@ public class JsonAuthenticationFilter extends UsernamePasswordAuthenticationFilt
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
         try {
-            ServletInputStream stream = request.getInputStream();
+            // TODO：これは下のコードがあるので不要
+            // ServletInputStream stream = request.getInputStream();
+
             // リクエストのjsonの値をUserFormにマッピングします。
             UserForm form = new ObjectMapper().readValue(request.getInputStream(), UserForm.class);
             // これでデフォルトのProviderを利用しつつ、ユーザーレコードの取得に関してはUserDetailsServiceの実装クラスのloadUserByUsernameを利用する

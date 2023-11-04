@@ -22,6 +22,7 @@ public class LoginFilter extends OncePerRequestFilter {
 
         // チェック
         if (header == null || !header.startsWith("Bearer")) {
+            // Tokenが存在しないor不適切なら次のFilterでログインさせる？
             filterChain.doFilter(request,response);
             return;
         }
