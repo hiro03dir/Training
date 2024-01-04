@@ -1,6 +1,10 @@
 <template>
     <div>
         <h1>ホーム</h1>
+        <ul>
+            <li>こちらはホーム画面です</li>
+            <li>ガチャを引くためのアプリケーションです</li>
+        </ul>
     </div>
 </template>
 
