@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/gacha
+    username: user
+    password: password
+logging:
+  level:
+    root: INFO
+    com.example: DEBUG
