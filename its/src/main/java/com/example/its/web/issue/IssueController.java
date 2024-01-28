@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import com.example.its.domain.issue.IssueService;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -31,5 +32,11 @@ public class IssueController {
     @GetMapping("/creationForm")
     public String showCreationForm() {
         return "issues/creationForm";
+    }
+
+    @PostMapping
+    public String create(IssueForm issueFrom, Model model) {
+        // TODO:リロード対策が必要、データの永続化が必要
+        return showList(model);
     }
 }
