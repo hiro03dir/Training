@@ -1,14 +1,13 @@
 services:
   postgre:
-    build: ./dockerfile
+    build: ./
     ports:
       - 3306:3306
-    container_name: tms_postgre
+    container_name: tms_postgres
     volumes:
       - ./data:/var/lib/postgresql/data
+        - ./init:/docker-entrypoint-initdb.d
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
       POSTGRES_DB: tms_db
-    volumes:
-      - ./data:/var/lib/postgresql/data

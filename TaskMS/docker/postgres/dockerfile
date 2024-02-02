@@ -1,6 +1,7 @@
-FROM postgres:latest #最新バージョンを確認し追記する
+FROM postgres:latest 
+#最新バージョンを確認し追記する
 
 # compose.ymlと同じものを書く。役割は別
 EXPOSE 3306
 # データの初期化を行うDDLをコンテナにコピー
-COPY ./init /docker-entrypoint-initdb.d/init.sql
+COPY ./init /docker-entrypoint-initdb.d
