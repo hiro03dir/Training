@@ -1,0 +1,22 @@
+services:
+  java:
+    build: ./java
+    ports:
+      - 8080:8080
+    tty: true
+    volumes:
+      - ../spring:/src
+    working_dir: /src
+
+  postgres:
+    build: ./postgres
+    ports:
+      - 5432:5432
+    container_name: tms_postgres
+    volumes:
+      - ./data:/var/lib/postgresql/data
+        - ./postgres/init:/docker-entrypoint-initdb.d
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: tms_db

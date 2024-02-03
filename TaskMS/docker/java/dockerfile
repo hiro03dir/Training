@@ -1,0 +1,5 @@
+FROM openjdk:15
+
+EXPOSE 8080
+
+WORKDIR /src
