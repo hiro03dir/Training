@@ -1,4 +1,4 @@
-FROM postgres:latest 
+FROM postgres:16
 #最新バージョンを確認し追記する
 
 # compose.ymlと同じものを書く。役割は別

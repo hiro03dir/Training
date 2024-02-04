@@ -7,6 +7,8 @@ services:
     volumes:
       - ../spring:/src
     working_dir: /src
+    depends_on:
+      - postgres
 
   postgres:
     build: ./postgres
