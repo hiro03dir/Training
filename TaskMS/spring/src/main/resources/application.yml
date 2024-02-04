@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://postgres:5432/tms_db
+    username: user
+    password: password
+  jpa:
+    # DialectはHibernateとpostgres間の仲介
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: false
+    hibernate:
+      ddl-auto: none
+logging:
+  level:
+    root: INFO
+    com.example: DEBUG

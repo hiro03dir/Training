@@ -1,0 +1,7 @@
+FROM postgres:16
+#最新バージョンを確認し追記する
+
+# compose.ymlと同じものを書く。役割は別
+EXPOSE 5432
+# データの初期化を行うDDLをコンテナにコピー
+COPY ./init /docker-entrypoint-initdb.d
