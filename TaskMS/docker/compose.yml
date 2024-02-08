@@ -22,3 +22,12 @@ services:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
       POSTGRES_DB: tms_db
+
+  react:
+    build: ./react
+    container_name: react
+    ports:
+      - 3000:3000
+    volumes:
+      - ../spring/react:/src
+    stdin_open: true
