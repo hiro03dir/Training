@@ -8,4 +8,7 @@
 2. コンテナが立ち上がったことを確認したら、`docker compose exec postgre psql -U user -d tms_db`
 3. テーブル一覧：`\dt`
 
-## react-router-dom
+## 環境設定漏れ
+
+- react-router-dom
+- axios
