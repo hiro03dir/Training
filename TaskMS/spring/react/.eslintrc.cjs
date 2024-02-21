@@ -14,5 +14,7 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
+    // useEffectの第2引数空を許容
+    "react-hooks/exhaustive-deps": "off"
   },
 }
